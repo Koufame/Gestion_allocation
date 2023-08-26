@@ -1,0 +1,10 @@
+<!-- templates/liste_taches.html -->
+<h2>Liste des tâches autorisées</h2>
+{% for tache in taches %}
+  <h3>Tâche {{ forloop.counter }} {{ tache.titre }}</h3>
+  <p><strong>Étudiant :</strong> {{ tache.etudiant.nom }}</p>
+  <p><strong>Matière :</strong> {{ tache.matiere }}</p>
+  <p><strong>Statut :</strong> {{ tache.statut }}</p>
+  <!-- Afficher d'autres informations sur la tâche -->
+  <a href="{{ tache.fichier.url }}" download>Télécharger la tâche</a>
+{% endfor %}

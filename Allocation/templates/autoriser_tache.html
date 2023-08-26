@@ -1,0 +1,30 @@
+<!-- templates/autoriser_tache.html -->
+<form method="post"  enctype="multipart/form-data">
+  {% csrf_token %}
+  <label for="etudiant">Étudiant :</label>
+  <select name="etudiant" required>
+    {% for etudiant1 in etudiants %}
+      <option value="{{ etudiant1.id }}">{{ etudiant1.nom }}</option>
+    {% endfor %}
+  </select>
+<br>
+ <label for="titre">Intitulé du projet :</label>
+  <input type="text" name="titre" required>
+  <br>
+  <label for="matiere">Matière :</label>
+  <input type="text" name="matiere" required>
+  <br>
+   <label for="fichier">Fichier :</label>
+  <input type="file" name="fichier" required>
+  <br>
+<label for="statut">Statut :</label>
+  <select name="statut" required>
+    <option value="en_cours">En cours</option>
+    <option value="soumis">Soumis</option>
+    <option value="corrigé">Corrigé</option>
+    <option value="traité">Trait&eacute;</option>
+    <option value="archivé">Archiv&eacute;</option>
+  </select>
+  <br>
+  <button type="submit">Autoriser la tâche</button>
+</form>

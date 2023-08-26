@@ -1,0 +1,7 @@
+<!-- Template pour créer un cours -->
+<h2>Créer un nouveau cours</h2>
+<form method="POST" action="{% url 'creer_cours' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Créer le cours</button>
+</form>

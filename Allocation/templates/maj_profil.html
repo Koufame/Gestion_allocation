@@ -1,0 +1,14 @@
+<!-- Template pour la mise à jour du profil -->
+<h2>Profil de l'utilisateur</h2>
+{% if mise_a_jour_reussie %}
+    <p>Votre profil a été mis à jour avec succès.</p>
+{% endif %}
+<form method="POST" action="{% url 'mise_a_jour_profil' %}">
+    {% csrf_token %}
+    <label for="nom">Nom:</label>
+    <input type="text" name="nom" value="{{ utilisateur.nom }}">
+    <label for="prenom">Prénom:</label>
+    <input type="text" name="prenom" value="{{ utilisateur.prenom }}">
+    <!-- Ajoutez d'autres champs de profil ici -->
+    <button type="submit">Mettre à jour</button>
+</form>

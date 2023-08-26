@@ -1,0 +1,14 @@
+<!-- autorisation_note.html -->
+
+<h2>Autoriser et Noter Soumission</h2>
+
+<p>Titre du cours: {{ soumission.cours.titre }}</p>
+<p>Titre de la soumission: {{ soumission.titre }}</p>
+<!-- Ajouter un lien de téléchargement vers le fichier -->
+<p><a href="{{ soumission.fichier.url }}" download>Télécharger le fichier à noter</a></p>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Enregistrer la note</button>
+</form>

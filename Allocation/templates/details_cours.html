@@ -1,0 +1,13 @@
+<!-- Template pour les détails d'un cours -->
+<h2>Détails du cours "{{ cours.titre }}"</h2>
+<p>{{ cours.description }}</p>
+<p>Enseignant responsable : {{ cours.enseignant.nom }}</p>
+<!-- Affichez d'autres détails du cours -->
+<p>Étudiant : {{ cours.etudiant }}</p>
+<p>Date de début : {{ cours.date_debut }}</p>
+<p>Date de fin : {{ cours.date_fin }}</p>
+
+{% if user.is_authenticated and user == cours.etudiant %}
+<a href="{% url 'soumettre_travail' cours.id %}">Soumettre mon travail</a>
+    <a href="{% url 'mise_a_jour_profil' %}" class="btn btn-primary">Mettre à jour mon profil</a>
+{% endif %}

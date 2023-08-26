@@ -1,0 +1,9 @@
+<!-- Template pour la liste des tâches archivées -->
+<h2>Liste des tâches archivées</h2>
+<ul>
+     {% for tache in taches_archivees %}
+        <li>{{ tache.titre }} - <a href="{% url 'telecharger_fichier' tache.id %}">Télécharger le fichier</a></li>
+    {% empty %}
+        <li>Aucune tâche archivée disponible.</li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,32 @@
+<h2>Liste des cours en cours</h2>
+<ul>
+    {% for cours in cours_en_cours %}
+        <li>
+            {{ cours.titre }} - Enseignant : {{ cours.enseignant.nom }}
+            {% if utilisateur.is_authenticated and utilisateur.role == 'enseignant' %}
+                <a href="{% url 'mise_a_jour_profil' %}">Mettre à jour mon profil</a>
+            {% endif %}
+            
+        </li>
+    {% endfor %}
+</ul>
+
+<ul>
+    {% for cours in cours_en_cours %}
+        <li><a href="{% url 'details_cours' cours.id %}">{{ cours.titre }}</a></li>
+        <ul>
+            {% for soumission in cours.soumission_set.all %}
+            {% if utilisateur.is_authenticated and utilisateur.role == 'enseignant' %}
+
+                <li>
+
+                    <a href="{% url 'autoriser_et_noter_soumission' soumission.id %}">Autoriser et Noter Soumission</a>
+            {% endif %}
+
+                </li>
+            {% endfor %}
+        </ul>
+    {% empty %}
+        <li>Aucun cours en cours.</li>
+    {% endfor %}
+</ul>
